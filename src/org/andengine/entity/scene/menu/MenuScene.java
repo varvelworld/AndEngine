@@ -103,20 +103,6 @@ public class MenuScene extends CameraScene implements IOnAreaTouchListener, IOnS
 	}
 
 	@Override
-	public MenuScene getChildScene() {
-		return (MenuScene)super.getChildScene();
-	}
-
-	@Override
-	public void setChildScene(final Scene pChildScene, final boolean pModalDraw, final boolean pModalUpdate, final boolean pModalTouch) throws IllegalArgumentException {
-		if (pChildScene instanceof MenuScene) {
-			super.setChildScene(pChildScene, pModalDraw, pModalUpdate, pModalTouch);
-		} else {
-			throw new IllegalArgumentException("A " + MenuScene.class.getSimpleName() + " accepts only " + MenuScene.class.getSimpleName() + " as a ChildScene.");
-		}
-	}
-
-	@Override
 	public void clearChildScene() {
 		if (this.getChildScene() != null) {
 			this.getChildScene().reset();
@@ -184,8 +170,7 @@ public class MenuScene extends CameraScene implements IOnAreaTouchListener, IOnS
 	}
 
 	public void back(final boolean pResetAnimations, final boolean pResetParentMenuSceneAnimations) {
-		super.back();
-
+	
 		if (pResetAnimations) {
 			this.resetAnimations();
 		}
@@ -195,6 +180,7 @@ public class MenuScene extends CameraScene implements IOnAreaTouchListener, IOnS
 				((MenuScene)this.mParentScene).resetAnimations();
 			}
 		}
+		super.back();
 	}
 
 	// ===========================================================
