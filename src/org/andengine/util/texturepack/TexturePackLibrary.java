@@ -36,6 +36,10 @@ public class TexturePackLibrary {
 		this.mTexturePackMapping.put(pID, pTexturePack);
 		this.mTexturePackTextureRegionSourceMapping.putAll(pTexturePack.getTexturePackTextureRegionLibrary().getSourceMapping());
 	}
+	
+	public TexturePack get(final String pID) {
+		return this.mTexturePackMapping.get(pID);
+	}
 
 	// ===========================================================
 	// Methods
