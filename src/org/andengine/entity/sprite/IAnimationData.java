@@ -25,7 +25,7 @@ public interface IAnimationData {
 	public int getFrameCount();
 	public int getFirstFrameIndex();
 	/**
-	 * @return in milliseconds.
+	 * @return in nanoseconds.
 	 */
 	public long getAnimationDuration();
 
