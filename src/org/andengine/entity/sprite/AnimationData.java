@@ -246,10 +246,12 @@ public class AnimationData implements IAnimationData {
 	public void set(final long[] pFrameDurations, final int[] pFrames, final int pLoopCount) {
 		this.set(pFrameDurations, pFrames.length, pFrames, 0, pLoopCount);
 	}
-
+	/**
+	 * 由于深度拷贝调用了此方法，原先方法中数组并没有深度拷贝，在此修复 by 陆钟豪 2013-11-18
+	 */
 	@Override
 	public void set(final IAnimationData pAnimationData) {
-		this.set(pAnimationData.getFrameDurations(), pAnimationData.getFrameCount(), pAnimationData.getFrames(), pAnimationData.getFirstFrameIndex(), pAnimationData.getLoopCount());
+		this.set(pAnimationData.getFrameDurations().clone(), pAnimationData.getFrameCount(), pAnimationData.getFrames().clone(), pAnimationData.getFirstFrameIndex(), pAnimationData.getLoopCount());
 	}
 
 	private void set(final long[] pFrameDurations, final int pFrameCount, final int[] pFrames, final int pFirstFrameIndex, final int pLoopCount) {
